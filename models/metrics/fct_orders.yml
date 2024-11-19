@@ -1,0 +1,36 @@
+semantic_models:
+  - name: orders
+    description: order metrics
+    model: ref('fct_orders')
+    default:
+      agg_time_dimension: dimension_name
+    entities: # real-world concepts in a business setting, i.e. ID columns (primary, unique, foreign, natural)
+      - name: order
+        expr: order_id
+        type: primary
+    dimensions: # categorical or time related information
+    # categorical: product type, color, geographical location etc
+    # time: two parameters time_granularity (smallest amount of time to report, defaults to highest) and is_partition 
+    # (true if have partition key); slowly changing dimensions (SCD II) are categorized as time dimensions
+      - name: is_drink_order
+        type: categorical
+        expr: column or expr like case when quantity > 10 then true else false end
+    measures:
+    # Common SQL aggregations performed on columns in your model. They can be the entire metric or a building block.
+      - name: order_total
+        description: The total amount for each order including taxes.
+        agg: sum
+        expr: amount
+        agg_params: #specific aggregation properties such as percentile ## optional
+        agg_time_dimension: #The time field. Defaults to the default agg time dimension for the semantic model. ## Optional
+    meta: same as always
+    tags: same as always
+
+metrics:
+#SIMPLE TYPE METRICS
+  - name: "order_total"
+    description: "Sum of order value"
+    type: simple
+    label: "order_total"
+    type_params:
+      measure: order_total
