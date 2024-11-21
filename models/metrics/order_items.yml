@@ -1,0 +1,19 @@
+semantic_models:
+  - name: order_items
+    description: items
+    model: ref('order_items')
+    default:
+      agg_time_dimension: dimension_name
+    entities:
+      - name: customer
+        expr: customer_id
+        type: primary
+    dimensions:
+      - name: last_ordered_at
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - measures_here
+    meta: same as always
+    tags: same as always
