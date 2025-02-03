@@ -34,15 +34,3 @@ exposures:
     owner:
       name: Martha Von Data
       email: data@jaffleshop.com
-
-  - name: customer_orders_data_v2
-    label: customer_orders_data_v3
-    type: dashboard
-    maturity: low
-    url: https://tinyurl.com/jaffle-shop-reporting
-    description: 'Exposure for customer order data'
-    depends_on:
-      - ref('fct_customer_orders')
-    owner:
-      name: Martha Von Data
-      email: data@jaffleshop.com
