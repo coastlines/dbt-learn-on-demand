@@ -28,10 +28,10 @@ completed_payments as (
         order_id,
         max(payment_created_at) as payment_finalized_date,
         sum(payment_amount) as total_amount_paid,
-        iff(payment_status like 'success', true, false) as IsPaymentSuccess
+        -- iff(payment_status like 'success', true, false) as IsPaymentSuccess
     from payments
     where payment_status <> 'fail'
-    group by 1
+    group by 1,4
 
 ),
 
