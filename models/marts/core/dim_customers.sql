@@ -1,3 +1,15 @@
+{% set owner = "erica" %}
+
+{{
+    config(
+        meta={
+            "owner": owner,
+        }
+    )
+}}
+
+{{ set_owner_slack_id(owner) }}
+
 with customers as (
 
     select * from {{ ref('stg_customers')}}
