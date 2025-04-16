@@ -31,7 +31,7 @@ completed_payments as (
         -- iff(payment_status like 'success', true, false) as IsPaymentSuccess
     from payments
     where payment_status <> 'fail'
-    group by 1,4
+    group by 1
 
 ),
 
