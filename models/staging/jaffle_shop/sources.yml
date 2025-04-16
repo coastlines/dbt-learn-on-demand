@@ -30,4 +30,5 @@ sources:
 groups:
   - name: erica
     owner:
+      name: erica
       email: erica.faulkenberry@dbtlabs.com
