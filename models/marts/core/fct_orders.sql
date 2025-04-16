@@ -1,3 +1,6 @@
+{{ config(group = 'erica') }}
+
+
 with orders as (
     select * from {{ ref('stg_orders' ) }}
 ),
